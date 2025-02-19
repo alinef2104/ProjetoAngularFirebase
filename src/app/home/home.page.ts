@@ -4,6 +4,7 @@ import { CrudService } from '../services/crud.service';
 import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { MessageService } from '../services/message.service';
 import { Router } from '@angular/router';
+import { increment } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,15 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor( ){ }
+  page: string = 'Pagina Inicial';
+  valor: number = 0;
+
+  incrementer(){
+    this.valor++;
+  }
+
+  decrementer(){
+    this.valor--
+  }
 
 }

@@ -1,4 +1,23 @@
 <ion-content [fullscreen]="true">
-    
+
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>{{ page }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-label>Página Inicial</ion-label>
+
+    <ion-button routerLink="/sobre">Sobre Nós</ion-button>
+
+    <ion-content class="ion-padding">
+        <ion-button (click)="incrementer()">
+            <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+        
+        <ion-button (click)="decrementer()" color="secundary">
+            <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+    </ion-content>
 
 </ion-content>
