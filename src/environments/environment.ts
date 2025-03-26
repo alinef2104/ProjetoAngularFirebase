@@ -4,13 +4,13 @@
 
 export const environment = {
   firebaseConfig: {
-    apiKey: "AIzaSyAgqpnXNxZ8abif8ssQq_C2s998w7jZb68",
-    authDomain: "api-aula-d6451.firebaseapp.com",
-    projectId: "api-aula-d6451",
-    storageBucket: "api-aula-d6451.appspot.com",
-    messagingSenderId: "48648388488",
-    appId: "1:48648388488:web:dc73e0a1496a52cd4b843d",
-    measurementId: "G-CR3MDWMWJF"
+    apiKey: "AIzaSyAs2HQ1STvUmBEEM73SazECM8JEG9mMgXA",
+    authDomain: "redesocial-f0cf6.firebaseapp.com",
+    projectId: "redesocial-f0cf6",
+    storageBucket: "redesocial-f0cf6.firebasestorage.app",
+    messagingSenderId: "973795735798",
+    appId: "1:973795735798:web:71ec74e09369c6736c54d7",
+    measurementId: "G-5NKZY79GJM"
   },
   production: false
 };
