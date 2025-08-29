@@ -1,8 +1,25 @@
 <ion-content [fullscreen]="true">
 
-   <div *ngFor="let cliente of this.clientes">
-        <h1>{{ cliente.nome }}</h1>
-        <h1>{{ cliente.email }}</h1>
-   </div> 
+   <ion-row class="ion-justify-content-center">
+      <ion-col size="6">
+         <ion-item>
+            <ion-input type="text" label="Nome Completo" [(ngModel)]="this.usuario.name"></ion-input>
+         </ion-item>
+         <ion-item>
+            <ion-input type="text" label="E-mail" [(ngModel)]="this.usuario.email"></ion-input>
+         </ion-item>         
+         <ion-item>
+            <ion-input type="text" label="Senha" [(ngModel)]="this.usuario.password"></ion-input>
+         </ion-item>
+         <ion-item>
+            <ion-input type="text" label="Confirmação da Senha" [(ngModel)]="this.usuario.password_confirmation"></ion-input>
+         </ion-item>
+         <ion-item>
+            <ion-button (click)="this.cadastrarUsuario()">Cadastrar-se</ion-button>
+         </ion-item>
+      </ion-col>
+   </ion-row>
+
+   {{this.usuario.name}}
 
 </ion-content>
