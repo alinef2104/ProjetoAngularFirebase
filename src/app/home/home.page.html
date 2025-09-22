@@ -1,25 +1,44 @@
 <ion-content [fullscreen]="true">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
 
-   <ion-row class="ion-justify-content-center">
-      <ion-col size="6">
-         <ion-item>
-            <ion-input type="text" label="Nome Completo" [(ngModel)]="this.usuario.name"></ion-input>
-         </ion-item>
-         <ion-item>
-            <ion-input type="text" label="E-mail" [(ngModel)]="this.usuario.email"></ion-input>
-         </ion-item>         
-         <ion-item>
-            <ion-input type="text" label="Senha" [(ngModel)]="this.usuario.password"></ion-input>
-         </ion-item>
-         <ion-item>
-            <ion-input type="text" label="Confirmação da Senha" [(ngModel)]="this.usuario.password_confirmation"></ion-input>
-         </ion-item>
-         <ion-item>
-            <ion-button (click)="this.cadastrarUsuario()">Cadastrar-se</ion-button>
-         </ion-item>
-      </ion-col>
-   </ion-row>
+      <!-- Login / Cadastro -->
+      <div *ngIf="!logado">
+        <h2>Cadastro</h2>
+        <ion-item><ion-input placeholder="Nome" [(ngModel)]="usuario.name"></ion-input></ion-item>
+        <ion-item><ion-input placeholder="Email" [(ngModel)]="usuario.email"></ion-input></ion-item>
+        <ion-item><ion-input type="password" placeholder="Senha" [(ngModel)]="usuario.password"></ion-input></ion-item>
+        <ion-item><ion-input type="password" placeholder="Confirmação" [(ngModel)]="usuario.password_confirmation"></ion-input></ion-item>
+        <ion-item><ion-button expand="full" (click)="registrar()">Cadastrar</ion-button></ion-item>
 
-   {{this.usuario.name}}
+        <h2>Login</h2>
+        <ion-item><ion-input placeholder="Email" [(ngModel)]="loginData.email"></ion-input></ion-item>
+        <ion-item><ion-input type="password" placeholder="Senha" [(ngModel)]="loginData.password"></ion-input></ion-item>
+        <ion-item><ion-button expand="full" (click)="login()">Login</ion-button></ion-item>
+      </div>
 
+      <!-- Perfil + Posts -->
+      <div *ngIf="logado">
+        <h2>Bem-vindo(a), {{ perfilData.name }}</h2>
+        <ion-button expand="full" color="danger" (click)="logout()">Sair</ion-button>
+
+        <hr>
+        <h3>Criar Postagem</h3>
+        <ion-item><ion-input placeholder="Digite sua postagem" [(ngModel)]="novaPostagem.description"></ion-input></ion-item>
+        <ion-item><ion-button expand="full" (click)="criarPost()">Postar</ion-button></ion-item>
+
+        <hr>
+        <h3>Postagens</h3>
+        <ion-list>
+          <ion-item *ngFor="let post of posts">
+            <ion-label>
+              <h2>{{ post.description }}</h2>
+              <p>{{ post.data }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+    </ion-col>
+  </ion-row>
 </ion-content>

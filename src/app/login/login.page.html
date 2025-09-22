@@ -1,0 +1,10 @@
+<ion-content [fullscreen]="true">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
+      <h2>Login</h2>
+      <ion-item><ion-input placeholder="Email" [(ngModel)]="loginData.email"></ion-input></ion-item>
+      <ion-item><ion-input type="password" placeholder="Senha" [(ngModel)]="loginData.password"></ion-input></ion-item>
+      <ion-item><ion-button expand="full" (click)="login()">Login</ion-button></ion-item>
+    </ion-col>
+  </ion-row>
+</ion-content>
