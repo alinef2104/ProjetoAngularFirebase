@@ -45,14 +45,25 @@ export class PerfilPage implements OnInit {
 
   criarPost() {
     if (!this.novaPostagem.description) return;
-
-    this.http.post(`${this.apiUrl}/posts/criar`, this.novaPostagem, {
+  
+    // Garantir que picture seja null se vazio
+    const payload = {
+      description: this.novaPostagem.description,
+      picture: this.novaPostagem.picture ? this.novaPostagem.picture : null
+    };
+  
+    this.http.post(`${this.apiUrl}/posts/criar`, payload, {
       headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` })
     }).subscribe(() => {
       this.novaPostagem.description = '';
-      this.carregarPosts();
+      this.novaPostagem.picture = '';
+      this.carregarPosts(); // recarrega feed
+    }, err => {
+      console.error(err);
+      alert('Erro ao postar');
     });
   }
+  
 
   logout() {
     this.http.post(`${this.apiUrl}/usuario/logout`, {}, {
