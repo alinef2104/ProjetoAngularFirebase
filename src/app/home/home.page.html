@@ -1,40 +1,22 @@
-<ion-content class="ion-padding feed-container">
+<app-navbar></app-navbar>
 
-  <!-- BARRA SUPERIOR -->
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Feed</ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="logout()">Logout</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-
-  <!-- NOVA POSTAGEM -->
-  <div class="post-card new-post">
-    <textarea [(ngModel)]="novaPostagem.description" 
-              class="post-textarea" 
-              placeholder="O que você está pensando?"></textarea>
-    <input type="text" [(ngModel)]="novaPostagem.picture" 
-           class="post-input" 
-           placeholder="URL da imagem (opcional)">
-    <button (click)="criarPost()" class="btn-post">Publicar</button>
-  </div>
+<ion-content class="feed-container">
 
   <!-- LISTA DE POSTS -->
-  <ion-list>
-    <ion-item *ngFor="let post of posts" lines="none">
-      <ion-avatar slot="start">
-        <img *ngIf="post.user.picture" [src]="post.user.picture">
-        <img *ngIf="!post.user.picture" src="assets/default-avatar.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>{{ post.user.name }}</h2>
-        <p>{{ post.description }}</p>
-        <img *ngIf="post.picture" [src]="post.picture" class="post-image">
-        <small>{{ post.created_at | date:'short' }}</small>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <div class="posts-container">
+    <div *ngFor="let post of posts" class="post-card">
+      <div class="post-header">
+        <img *ngIf="post.user.picture" [src]="post.user.picture" class="post-user-picture">
+        <div>
+          <strong class="post-user-name">{{ post.user.name }}</strong><br>
+          <small class="post-date">{{ post.created_at | date:'short' }}</small>
+        </div>
+      </div>
+
+      <p class="post-description">{{ post.description }}</p>
+
+      <img *ngIf="post.picture" [src]="post.picture" class="post-image">
+    </div>
+  </div>
 
 </ion-content>

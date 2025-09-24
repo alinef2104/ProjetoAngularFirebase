@@ -1,54 +1,46 @@
-<ion-content class="ion-padding feed-container">
+<ion-content class="feed-container">
 
-  <!-- PERFIL DO USUÁRIO -->
-<div class="profile-card">
-  <ion-buttons slot="end">
-    <ion-button (click)="logout()">Logout</ion-button>
-  </ion-buttons>
+  <div class="feed-wrapper">
 
+    <!-- PERFIL DO USUÁRIO -->
+    <div class="profile-card">
+      <img *ngIf="perfil.picture" [src]="perfil.picture" class="profile-picture">
+      <h4 class="profile-name">{{ perfil.name }}</h4>
+      <p class="profile-email">{{ perfil.email }}</p>
 
-  <img *ngIf="perfil.picture" [src]="perfil.picture" class="profile-picture">
+      <!-- Botão de upload -->
+      <label class="btn-upload">
+        📷 Alterar Foto
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
+      </label>
+    </div>
 
-  <h4 class="profile-name">{{ perfil.name }}</h4>
-  <p class="profile-email">{{ perfil.email }}</p>
+    <!-- CRIAR NOVA POSTAGEM -->
+    <div class="post-card new-post">
+      <textarea [(ngModel)]="novaPostagem.description" 
+                class="post-textarea" 
+                placeholder="O que você está pensando?"></textarea>
+      <input type="text" [(ngModel)]="novaPostagem.picture" 
+             class="post-input" 
+             placeholder="URL da imagem (opcional)">
+      <button (click)="criarPost()" class="btn-post">Publicar</button>
+    </div>
 
-  <!-- Botão de upload -->
-  <label class="btn-upload">
-    📷 Alterar Foto
-    <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
-  </label>
-</div>
-
-
-  <!-- CRIAR NOVA POSTAGEM -->
-  <div class="post-card new-post">
-    <textarea [(ngModel)]="novaPostagem.description" 
-              class="post-textarea" 
-              placeholder="O que você está pensando?"></textarea>
-    <input type="text" [(ngModel)]="novaPostagem.picture" 
-           class="post-input" 
-           placeholder="URL da imagem (opcional)">
-    <button (click)="criarPost()" class="btn-post">Publicar</button>
-  </div>
-
-  <!-- FEED DE POSTAGENS -->
-  <div *ngFor="let post of posts" class="post-card">
-    <div class="post-header">
-      <img *ngIf="post.user.picture" [src]="post.user.picture" class="post-user-picture">
-      <div>
-        <strong class="post-user-name">{{ post.user.name }}</strong><br>
-        <small class="post-date">{{ post.created_at | date:'short' }}</small>
+    <!-- FEED DE POSTAGENS -->
+    <div *ngFor="let post of posts" class="post-card">
+      <div class="post-header">
+        <img *ngIf="post.user.picture" [src]="post.user.picture" class="post-user-picture">
+        <div>
+          <strong class="post-user-name">{{ post.user.name }}</strong><br>
+          <small class="post-date">{{ post.created_at | date:'short' }}</small>
+        </div>
       </div>
+
+      <p class="post-description">{{ post.description }}</p>
+
+      <img *ngIf="post.picture" [src]="post.picture" class="post-image">
     </div>
 
-    <p class="post-description">{{ post.description }}</p>
-
-    <img *ngIf="post.picture" [src]="post.picture" class="post-image">
-
-    <div class="post-actions">
-      <button class="btn-action">👍 Curtir</button>
-      <button class="btn-action">💬 Comentar</button>
-    </div>
   </div>
 
 </ion-content>
