@@ -1,0 +1,42 @@
+.fundo-roxo {
+  --background: linear-gradient(135deg, #6a11cb, #8e44ad);
+}
+
+.altura-total {
+  height: 100%;
+}
+
+.card-login {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.titulo-login {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #6a11cb;
+  margin-bottom: 1.5rem;
+}
+
+.input-login {
+  --background: #f9f9f9;
+  --border-radius: 12px;
+  margin-bottom: 1rem;
+  padding-left: 8px;
+
+  /* Corrige texto branco */
+  --color: #000;
+  --placeholder-color: #666;
+}
+
+.botao-login {
+  --background: #6a11cb;
+  --background-hover: #8e44ad;
+  --color: #fff;
+  margin-top: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 6px 14px rgba(106, 17, 203, 0.4);
+}

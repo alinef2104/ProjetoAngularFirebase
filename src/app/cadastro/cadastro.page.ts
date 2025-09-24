@@ -10,19 +10,27 @@ import { Router } from '@angular/router';
 export class CadastroPage {
 
   apiUrl = 'http://localhost:8000/api';
-  usuario: any = { name: '', email: '', password: '', password_confirmation: '' };
+  
+  // 👉 dados do formulário de cadastro
+  usuario: any = { 
+    name: '', 
+    email: '', 
+    password: '', 
+    password_confirmation: '' 
+  };
 
   constructor(private http: HttpClient, private router: Router) {}
 
   cadastrar() {
-    this.http.post(`${this.apiUrl}/usuario/registrar-se`, this.usuario)
+    console.log('Enviando cadastro:', this.usuario);
+
+    this.http.post(`${this.apiUrl}/usuario/registrar`, this.usuario)
       .subscribe((res: any) => {
-        console.log('Registrado:', res);
-        alert('Cadastro realizado! Agora faça login.');
-        this.router.navigate(['/login']);
+        alert('Cadastro realizado com sucesso!');
+        this.router.navigate(['/login']); // redireciona pro login
       }, err => {
-        console.error(err);
-        alert('Erro no cadastro');
+        console.error('Erro no cadastro:', err);
+        alert('Erro: ' + JSON.stringify(err.error)); // mostra o erro real do backend
       });
   }
 }

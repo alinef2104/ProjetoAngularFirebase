@@ -28,9 +28,9 @@ export class PerfilPage implements OnInit {
   }
 
   carregarPerfil() {
-    this.http.post(`${this.apiUrl}/usuario/perfil`, {}, {
-      headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` })
-    }).subscribe((res: any) => {
+  this.http.get(`${this.apiUrl}/usuario/perfil`, {
+    headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` })
+  }).subscribe((res: any) => {
       this.perfil = res;
     });
   }
@@ -70,7 +70,30 @@ export class PerfilPage implements OnInit {
       headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` })
     }).subscribe(() => {
       localStorage.removeItem('token');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/cadastro']);
     });
   }
+
+
+  onFileSelected(event: any) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append('picture', file);
+
+  this.http.post(`${this.apiUrl}/usuario/foto-upload`, formData, {
+    headers: new HttpHeaders({ 
+      'Authorization': `Bearer ${this.token}` 
+    })
+  }).subscribe((res: any) => {
+    this.perfil.picture = res.picture_url; // chave correta do backend
+    alert('Foto atualizada com sucesso!');
+  }, err => {
+    console.error(err);
+    alert('Erro ao atualizar foto');
+  });
+
+}
+
 }

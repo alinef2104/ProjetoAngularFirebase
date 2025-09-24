@@ -1,12 +1,31 @@
-<ion-content [fullscreen]="true">
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="6">
-      <h2>Cadastro</h2>
-      <ion-item><ion-input placeholder="Nome" [(ngModel)]="usuario.name"></ion-input></ion-item>
-      <ion-item><ion-input placeholder="Email" [(ngModel)]="usuario.email"></ion-input></ion-item>
-      <ion-item><ion-input type="password" placeholder="Senha" [(ngModel)]="usuario.password"></ion-input></ion-item>
-      <ion-item><ion-input type="password" placeholder="Confirmação da Senha" [(ngModel)]="usuario.password_confirmation"></ion-input></ion-item>
-      <ion-item><ion-button expand="full" (click)="cadastrar()">Cadastrar</ion-button></ion-item>
-    </ion-col>
-  </ion-row>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="cadastrar()">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input [(ngModel)]="usuario.name" name="name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input [(ngModel)]="usuario.email" name="email" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input [(ngModel)]="usuario.password" name="password" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Confirmar Senha</ion-label>
+      <ion-input [(ngModel)]="usuario.password_confirmation" name="password_confirmation" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit">Cadastrar</ion-button>
+  </form>
 </ion-content>

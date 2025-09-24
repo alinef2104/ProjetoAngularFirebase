@@ -1,44 +1,40 @@
-<ion-content [fullscreen]="true">
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="6">
+<ion-content class="ion-padding feed-container">
 
-      <!-- Login / Cadastro -->
-      <div *ngIf="!logado">
-        <h2>Cadastro</h2>
-        <ion-item><ion-input placeholder="Nome" [(ngModel)]="usuario.name"></ion-input></ion-item>
-        <ion-item><ion-input placeholder="Email" [(ngModel)]="usuario.email"></ion-input></ion-item>
-        <ion-item><ion-input type="password" placeholder="Senha" [(ngModel)]="usuario.password"></ion-input></ion-item>
-        <ion-item><ion-input type="password" placeholder="Confirmação" [(ngModel)]="usuario.password_confirmation"></ion-input></ion-item>
-        <ion-item><ion-button expand="full" (click)="registrar()">Cadastrar</ion-button></ion-item>
+  <!-- BARRA SUPERIOR -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Feed</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="logout()">Logout</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-        <h2>Login</h2>
-        <ion-item><ion-input placeholder="Email" [(ngModel)]="loginData.email"></ion-input></ion-item>
-        <ion-item><ion-input type="password" placeholder="Senha" [(ngModel)]="loginData.password"></ion-input></ion-item>
-        <ion-item><ion-button expand="full" (click)="login()">Login</ion-button></ion-item>
-      </div>
+  <!-- NOVA POSTAGEM -->
+  <div class="post-card new-post">
+    <textarea [(ngModel)]="novaPostagem.description" 
+              class="post-textarea" 
+              placeholder="O que você está pensando?"></textarea>
+    <input type="text" [(ngModel)]="novaPostagem.picture" 
+           class="post-input" 
+           placeholder="URL da imagem (opcional)">
+    <button (click)="criarPost()" class="btn-post">Publicar</button>
+  </div>
 
-      <!-- Perfil + Posts -->
-      <div *ngIf="logado">
-        <h2>Bem-vindo(a), {{ perfilData.name }}</h2>
-        <ion-button expand="full" color="danger" (click)="logout()">Sair</ion-button>
+  <!-- LISTA DE POSTS -->
+  <ion-list>
+    <ion-item *ngFor="let post of posts" lines="none">
+      <ion-avatar slot="start">
+        <img *ngIf="post.user.picture" [src]="post.user.picture">
+        <img *ngIf="!post.user.picture" src="assets/default-avatar.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ post.user.name }}</h2>
+        <p>{{ post.description }}</p>
+        <img *ngIf="post.picture" [src]="post.picture" class="post-image">
+        <small>{{ post.created_at | date:'short' }}</small>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
-        <hr>
-        <h3>Criar Postagem</h3>
-        <ion-item><ion-input placeholder="Digite sua postagem" [(ngModel)]="novaPostagem.description"></ion-input></ion-item>
-        <ion-item><ion-button expand="full" (click)="criarPost()">Postar</ion-button></ion-item>
-
-        <hr>
-        <h3>Postagens</h3>
-        <ion-list>
-          <ion-item *ngFor="let post of posts">
-            <ion-label>
-              <h2>{{ post.description }}</h2>
-              <p>{{ post.data }}</p>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-      </div>
-
-    </ion-col>
-  </ion-row>
 </ion-content>
