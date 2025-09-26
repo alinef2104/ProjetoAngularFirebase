@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,11 +6,23 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  isLoggedIn = false;
+
   constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.checkLogin();
+  }
+
+  checkLogin() {
+    const token = localStorage.getItem('token'); // chave usada no login
+    this.isLoggedIn = !!token;
+  }
 
   logout() {
     localStorage.removeItem('token');
+    this.isLoggedIn = false;
     this.router.navigate(['/login']);
   }
 }

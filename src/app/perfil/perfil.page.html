@@ -1,21 +1,20 @@
+<app-navbar></app-navbar>
+
 <ion-content class="feed-container">
 
   <div class="feed-wrapper">
 
-    <!-- PERFIL DO USUÁRIO -->
     <div class="profile-card">
       <img *ngIf="perfil.picture" [src]="perfil.picture" class="profile-picture">
       <h4 class="profile-name">{{ perfil.name }}</h4>
       <p class="profile-email">{{ perfil.email }}</p>
 
-      <!-- Botão de upload -->
       <label class="btn-upload">
         📷 Alterar Foto
         <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
       </label>
     </div>
 
-    <!-- CRIAR NOVA POSTAGEM -->
     <div class="post-card new-post">
       <textarea [(ngModel)]="novaPostagem.description" 
                 class="post-textarea" 
@@ -26,7 +25,6 @@
       <button (click)="criarPost()" class="btn-post">Publicar</button>
     </div>
 
-    <!-- FEED DE POSTAGENS -->
     <div *ngFor="let post of posts" class="post-card">
       <div class="post-header">
         <img *ngIf="post.user.picture" [src]="post.user.picture" class="post-user-picture">

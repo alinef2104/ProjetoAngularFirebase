@@ -92,7 +92,9 @@ export class PerfilPage implements OnInit {
     formData.append('picture', file);
 
     this.http.post(`${this.apiUrl}/usuario/foto-upload`, formData, {
-      headers: new HttpHeaders({ Authorization: `Bearer ${this.token}` })
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     }).subscribe({
       next: (res: any) => {
         this.perfil.picture = res.picture_url;
@@ -100,8 +102,12 @@ export class PerfilPage implements OnInit {
       },
       error: err => {
         console.error(err);
-        alert('Erro ao atualizar foto');
+        alert('Erro ao atualizar foto: ' + (err.error?.message || 'Tente novamente'));
       }
     });
   }
-}
+
+  }
+
+
+

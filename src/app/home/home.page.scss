@@ -1,3 +1,7 @@
+ion-content{
+  --background: #fff;
+}
+
 .feed-container {
 background: linear-gradient(135deg, #6a11cb, #8e44ad);
 display: flex;
@@ -8,7 +12,7 @@ padding: 1rem;
 
 .post-description {
     color: rgb(0, 0, 0) !important;
-  }  
+}  
 
 .posts-container {
 width: 100%;
@@ -18,13 +22,13 @@ align-items: center;
 }
 
 .post-card {
-background: #fff;
-border-radius: 15px;
-padding: 1rem;
-margin-bottom: 1rem;
-width: 100%;
-max-width: 500px;
-box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .post-header {
@@ -60,5 +64,23 @@ margin-bottom: 0.5rem;
 width: 100%;
 border-radius: 12px;
 margin-top: 0.5rem;
+}
+
+
+.feed-title {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.feed-title h2 {
+  font-size: 24px;
+  color: #9073ca; /* Tom moderno roxo */
+}
+
+.feed-title p {
+  font-size: 14px;
+  color: rgb(96, 3, 109);
 }
   

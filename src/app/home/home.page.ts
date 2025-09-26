@@ -29,7 +29,7 @@ export class HomePage implements OnInit {
     this.http.get(`${this.apiUrl}/posts`, {
       headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` })
     }).subscribe((res: any) => {
-      this.posts = res; // já vem direto do Laravel
+      this.posts = res; 
     });
   }
 

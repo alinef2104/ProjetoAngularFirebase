@@ -6,15 +6,15 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 
-import { NavbarModule } from '../navbar/navbar.module'; // Navbar
+import { NavbarModule } from '../navbar/navbar.module'; 
 
 @NgModule({
   imports: [
-    CommonModule,        // ✅ necessário para pipes como date
+    CommonModule,      
     FormsModule,
-    IonicModule,         // ✅ necessário para ion-*
+    IonicModule,        
     HomePageRoutingModule,
-    NavbarModule         // ✅ Navbar
+    NavbarModule         
   ],
   declarations: [HomePage]
 })
