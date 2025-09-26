@@ -97,6 +97,7 @@ export class PerfilPage implements OnInit {
       })
     }).subscribe({
       next: (res: any) => {
+        console.log('URL da imagem recebida:', res.picture_url);
         this.perfil.picture = res.picture_url;
         alert('Foto atualizada com sucesso!');
       },
@@ -104,6 +105,7 @@ export class PerfilPage implements OnInit {
         console.error(err);
         alert('Erro ao atualizar foto: ' + (err.error?.message || 'Tente novamente'));
       }
+      
     });
   }
 

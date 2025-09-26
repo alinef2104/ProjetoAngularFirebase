@@ -1,13 +1,15 @@
-/* Fundo geral */
+ion-content{
+  --background: #fff;
+}
+
 .feed-container {
-  background-color: #f8f8ff; /* Branco suave */
+  background-color: #f8f8ff; 
   min-height: 100vh;
   display: flex;
   justify-content: center;
   padding: 2rem;
 }
 
-/* Wrapper centralizado */
 .feed-wrapper {
   display: flex;
   flex-direction: column;

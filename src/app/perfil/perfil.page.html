@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <ion-content class="feed-container">
-
+<hr>
   <div class="feed-wrapper">
 
     <div class="profile-card">
@@ -9,10 +9,7 @@
       <h4 class="profile-name">{{ perfil.name }}</h4>
       <p class="profile-email">{{ perfil.email }}</p>
 
-      <label class="btn-upload">
-        📷 Alterar Foto
-        <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
-      </label>
+
     </div>
 
     <div class="post-card new-post">
